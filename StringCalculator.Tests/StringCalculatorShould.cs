@@ -22,10 +22,13 @@ namespace StringCalculator.Tests
             Assert.Equal(expected, _calculator.Add(numbers));
         }
 
-        [Fact]
-        public void ReturnThreeForOneAndTwo()
+        [Theory]
+        [InlineData("1,2",3)]
+        [InlineData("10,20",30)]
+        [InlineData("101,201,111",413)]
+        public void ReturnThreeForOneAndTwo(string numbers, int expected)
         {
-            Assert.Equal(3, _calculator.Add("1,2"));
+            Assert.Equal(expected, _calculator.Add(numbers));
         } 
     }
 }
