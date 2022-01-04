@@ -13,12 +13,15 @@ namespace StringCalculator.Tests
             Assert.Equal(0, calculator.Add(""));
         }
 
-        [Fact]
-        public void ReturnNumberWithoutDelimiter()
+        [Theory]
+        [InlineData("1",1)]
+        [InlineData("10",10)]
+        [InlineData("100",100)]
+        public void ReturnNumberWithoutDelimiter(string numbers, int expected)
         {
             Calculator calculator = new();
             
-            Assert.Equal(1, calculator.Add("1"));
-        } 
+            Assert.Equal(expected, calculator.Add(numbers));
+        }
     }
 }
