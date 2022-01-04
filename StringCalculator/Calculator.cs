@@ -23,12 +23,29 @@ namespace StringCalculator
             var delimiterArray = delimiters.ToArray();
             if (numbers.IndexOfAny(delimiterArray) != -1)
             {
-                return numbers.Split(delimiterArray, StringSplitOptions.RemoveEmptyEntries)
-                    .Select(x => Int32.Parse(x))
-                    .Sum();
+                var splitNumbers = numbers.Split(delimiterArray, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(x => Int32.Parse(x));
+                var negativesNumbers = new List<int>();
+                var sum = 0;
+                foreach (var number in splitNumbers)
+                {
+                    if (number < 0)
+                    {
+                        negativesNumbers.Add(number);
+                        continue;
+                    }
+
+                    sum += number;
+
+                }
+
+                if (negativesNumbers.Count > 0) 
+                    throw new ArgumentOutOfRangeException($"Negatives not allowed {negativesNumbers}");
+
+                return sum;
             }
                 
-            return Int32.Parse(numbers);
+            return Int32.Parse(numbers) < 0 ?  throw new ArgumentOutOfRangeException($"Negatives not allowed {numbers}") : Int32.Parse(numbers);
         }
     }
 }
