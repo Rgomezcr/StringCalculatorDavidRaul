@@ -49,10 +49,14 @@ namespace StringCalculator.Tests
             Assert.Equal(expected, _calculator.Add(numbers));
         }
 
-        [Fact]
-        public void FailWhenInputHasNegativeNumbers()
+        [Theory]
+        [InlineData("-1")]
+        [InlineData("-1,1")]
+        [InlineData("-1,-1")]
+        [InlineData("//;\n-1;-1")]
+        public void FailWhenInputHasNegativeNumbers(string numbers)
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => _calculator.Add("-1"));
+            Assert.Throws<ArgumentOutOfRangeException>(() => _calculator.Add(numbers));
         } 
     }
 }
