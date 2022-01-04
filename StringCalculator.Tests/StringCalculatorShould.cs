@@ -5,12 +5,12 @@ namespace StringCalculator.Tests
 {
     public class StringCalculatorShould
     {
+        Calculator _calculator = new();
+        
         [Fact]
         public void ReturnZeroWhenInputIsEmpty()
         {
-            Calculator calculator = new();
-            
-            Assert.Equal(0, calculator.Add(""));
+            Assert.Equal(0, _calculator.Add(""));
         }
 
         [Theory]
@@ -19,9 +19,13 @@ namespace StringCalculator.Tests
         [InlineData("100",100)]
         public void ReturnNumberWithoutDelimiter(string numbers, int expected)
         {
-            Calculator calculator = new();
-            
-            Assert.Equal(expected, calculator.Add(numbers));
+            Assert.Equal(expected, _calculator.Add(numbers));
         }
+
+        [Fact]
+        public void ReturnThreeForOneAndTwo()
+        {
+            Assert.Equal(3, _calculator.Add("1,2"));
+        } 
     }
 }
