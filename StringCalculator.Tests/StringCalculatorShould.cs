@@ -40,10 +40,13 @@ namespace StringCalculator.Tests
             Assert.Equal(expected, _calculator.Add(numbers));
         }
 
-        [Fact]
-        public void ReturnSumForCustomDelimiter()
+        [Theory]
+        [InlineData("//;\n1;2",3)]
+        [InlineData("//,\n1,2",3)]
+        [InlineData("//@\n1@2",3)]
+        public void ReturnSumForCustomDelimiter(string numbers, int expected)
         {
-            Assert.Equal(3, _calculator.Add("//;\n1;2"));
+            Assert.Equal(expected, _calculator.Add(numbers));
         } 
     }
 }
