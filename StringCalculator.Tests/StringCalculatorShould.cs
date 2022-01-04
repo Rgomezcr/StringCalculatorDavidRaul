@@ -26,9 +26,15 @@ namespace StringCalculator.Tests
         [InlineData("1,2",3)]
         [InlineData("10,20",30)]
         [InlineData("101,201,111",413)]
-        public void ReturnThreeForOneAndTwo(string numbers, int expected)
+        public void ReturnSumForMultiplesCommaSeparatedNumbers(string numbers, int expected)
         {
             Assert.Equal(expected, _calculator.Add(numbers));
+        }
+
+        [Fact]
+        public void ReturnSumForMultiplesDelimiters()
+        {
+            Assert.Equal(6, _calculator.Add("1,2\n3"));
         } 
     }
 }
