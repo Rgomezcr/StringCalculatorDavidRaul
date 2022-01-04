@@ -47,6 +47,12 @@ namespace StringCalculator.Tests
         public void ReturnSumForCustomDelimiter(string numbers, int expected)
         {
             Assert.Equal(expected, _calculator.Add(numbers));
+        }
+
+        [Fact]
+        public void FailWhenInputHasNegativeNumbers()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => _calculator.Add("-1"));
         } 
     }
 }
