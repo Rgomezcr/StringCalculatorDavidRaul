@@ -12,5 +12,13 @@ namespace StringCalculator.Tests
             
             Assert.Equal(0, calculator.Add(""));
         }
+
+        [Fact]
+        public void ReturnNumberWithoutDelimiter()
+        {
+            Calculator calculator = new();
+            
+            Assert.Equal(1, calculator.Add("1"));
+        } 
     }
 }
