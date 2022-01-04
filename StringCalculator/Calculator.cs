@@ -9,7 +9,7 @@ namespace StringCalculator
         {
             if(string.IsNullOrEmpty(numbers))
                 return 0;
-            if (numbers.Contains(','))
+            if (numbers.Contains(',') || numbers.Contains('\n'))
             {
                 return numbers.Split(new char[]{',', '\n'}, StringSplitOptions.RemoveEmptyEntries)
                     .Select(x => Int32.Parse(x))
