@@ -38,6 +38,12 @@ namespace StringCalculator.Tests
         public void ReturnSumForMultiplesDelimiters(string numbers, int expected)
         {
             Assert.Equal(expected, _calculator.Add(numbers));
+        }
+
+        [Fact]
+        public void ReturnSumForCustomDelimiter()
+        {
+            Assert.Equal(3, _calculator.Add("//;\n1;2"));
         } 
     }
 }
